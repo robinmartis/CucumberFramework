@@ -1,0 +1,19 @@
+# Ignore log files
+*.log
+
+# Ignore report files (e.g., HTML, XML, PDF)
+*.html
+*.xml
+*.pdf
+
+# Ignore entire reports folder
+/reports/
+
+# Ignore build or output folders
+/target/
+/build/
+
+# Ignore Eclipse-specific files
+.classpath
+.project
+.settings/
