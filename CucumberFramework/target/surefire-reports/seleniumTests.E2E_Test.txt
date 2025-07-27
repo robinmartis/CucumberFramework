@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: seleniumTests.E2E_Test
+-------------------------------------------------------------------------------
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.420 s -- in seleniumTests.E2E_Test
