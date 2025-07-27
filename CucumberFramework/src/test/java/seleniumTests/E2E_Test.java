@@ -27,6 +27,7 @@ public class E2E_Test {
 		driver.findElement(By.name("reg_email__")).sendKeys("9611299166");
 		driver.findElement(By.name("reg_passwd__")).sendKeys("NewPassword"); 
 		
+		
 	}
 
 }
