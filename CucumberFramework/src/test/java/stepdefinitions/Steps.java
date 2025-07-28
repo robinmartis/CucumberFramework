@@ -10,9 +10,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageObjects.CreateNewAccountPage;
+import pageObjects.LoginPage;
 
 public class Steps {
 	WebDriver driver; 
+	LoginPage loginPage; 
+	CreateNewAccountPage newAccountPage; 
 
 	@Given("User is on home page")
     public void user_is_on_home_page() {
@@ -27,30 +31,54 @@ public class Steps {
     @When("User enter username and password")
     public void user_enter_username_and_password() {
         System.out.println("Entered username and password");
-        driver.findElement(By.id("email")).sendKeys("robin.martis@abc.com"); 
-		driver.findElement(By.id("pass")).sendKeys("password");
-				
+        
+//        Without Page Factory 
+//        driver.findElement(By.id("email")).sendKeys("robin.martis@abc.com"); 
+//		driver.findElement(By.id("pass")).sendKeys("password");
+		
+//        With Page Factory 
+        loginPage = new LoginPage(driver); 
+        loginPage.enterEmail("robin.martis@abc.com");
+        loginPage.enterpass("password");
+        
     }
 
     @And("Click on Create new account button")
     public void click_on_create_new_account_button() {
         System.out.println("Clicked on Create new account button");
-        driver.findElement(By.linkText("Create new account")).click(); 
+        
+//      Without Page Factory 
+//        driver.findElement(By.linkText("Create new account")).click(); 
 		 
+//        Using Page Factory 
+        loginPage = new LoginPage(driver); 
+        loginPage.click_Create_New_Account();
+        
+        
     }
 
     @And("Enter First Name")
     public void enter_first_name() {
         System.out.println("Entered First Name");
 
-		driver.findElement(By.name("firstname")).sendKeys("Robin"); 
-     
+//      Without Page Factory 
+//		driver.findElement(By.name("firstname")).sendKeys("Robin"); 
+
+//      Using Page Factory 
+        newAccountPage = new CreateNewAccountPage(driver); 
+        newAccountPage.enterFirstName("Robin"); 
+        
     }
 
     @And("Enter last Name")
     public void enter_last_name() {
         System.out.println("Entered Last Name");
-		driver.findElement(By.name("lastname")).sendKeys("Martis"); 
+//      Without Page Factory 
+//		driver.findElement(By.name("lastname")).sendKeys("Martis"); 
+		
+//      Using Page Factory 
+        newAccountPage = new CreateNewAccountPage(driver); 
+        newAccountPage.enterLastName("Martis"); 
 		
     }
 
@@ -58,14 +86,25 @@ public class Steps {
     public void enter_phone_no() {
         System.out.println("Entered Phone Number");
         
-        driver.findElement(By.name("reg_email__")).sendKeys("9611299166");
+//      Without Page Factory 
+//        driver.findElement(By.name("reg_email__")).sendKeys("9611299166");
+        
+//      Using Page Factory 
+        newAccountPage = new CreateNewAccountPage(driver); 
+        newAccountPage.enterReg_email("abc.as@asa.com"); 
 
     }
 
     @And("Enter New Password")
     public void enter_new_password() {
         System.out.println("Entered New Password");
-        driver.findElement(By.name("reg_passwd__")).sendKeys("NewPassword");
+        
+//      Without Page Factory 
+//        driver.findElement(By.name("reg_passwd__")).sendKeys("NewPassword");
+        
+//      Using Page Factory 
+        newAccountPage = new CreateNewAccountPage(driver); 
+        newAccountPage.enterReg_pass("asdadasd"); 
 		
     }
 	

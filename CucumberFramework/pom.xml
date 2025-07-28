@@ -9,27 +9,32 @@
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>4.25.0</version>
+        <version>4.21.0</version>
     </dependency>
+    
+    
 
     <!-- Cucumber -->
     <dependency>
         <groupId>io.cucumber</groupId>
         <artifactId>cucumber-java</artifactId>
-        <version>7.18.0</version>
     </dependency>
+    
     <dependency>
         <groupId>io.cucumber</groupId>
         <artifactId>cucumber-testng</artifactId>
-        <version>7.18.0</version>
     </dependency>
     
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-picocontainer</artifactId>
+    </dependency>
 
     <!-- TestNG -->
     <dependency>
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
-        <version>7.10.2</version>
+        <version>7.10.1</version>
         <scope>test</scope>
     </dependency>
 
@@ -37,7 +42,7 @@
     <dependency>
         <groupId>io.github.bonigarcia</groupId>
         <artifactId>webdrivermanager</artifactId>
-        <version>5.8.0</version>
+        <version>5.7.0</version>
     </dependency>
     
     <dependency>
@@ -63,6 +68,19 @@
 	
 
 </dependencies>
+
+<!-- Cucumber BOM -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-bom</artifactId>
+                <version>7.16.1</version> <!-- You can use the latest version here -->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 <build>
 	    <plugins>
