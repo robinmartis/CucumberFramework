@@ -10,14 +10,25 @@ public class ConfigFileReader {
 	private Properties properties; 
 	private final String propertyFilePath = "configs/Configuation.properties"; 
 	
-	public void configReader() throws IOException {
-		BufferedReader reader; 
-		reader = new BufferedReader(new FileReader(propertyFilePath)); 
-		properties = new Properties(); 
-		properties.load(reader);
-		reader.close();
-		
-	}
+//	public void configReader() throws IOException {
+//		BufferedReader reader; 
+//		reader = new BufferedReader(new FileReader(propertyFilePath)); 
+//		properties = new Properties(); 
+//		properties.load(reader);
+//		reader.close();
+//		
+//	}
+	
+	public ConfigFileReader() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath));
+            properties = new Properties();
+            properties.load(reader);
+            reader.close();
+        } catch (IOException e) {
+            throw new RuntimeException("Configuration.properties file not found at " + propertyFilePath);
+        }
+    }
 	
 	public long getImplicitWait() {
 		String implicitWait = properties.getProperty("implicitwait"); 

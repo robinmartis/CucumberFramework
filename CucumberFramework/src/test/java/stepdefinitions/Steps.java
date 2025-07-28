@@ -12,6 +12,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import managers.FileReaderManager;
 import managers.PageObjectManager;
 import pageObjects.CreateNewAccountPage;
 import pageObjects.LoginPage;
@@ -21,24 +22,24 @@ public class Steps {
 	LoginPage loginPage; 
 	CreateNewAccountPage newAccountPage; 
 	PageObjectManager pageObjectManager; 
-	ConfigFileReader configFileReader; 
+//	ConfigFileReader configFileReader; 
 
 	@Given("User is on home page")
     public void user_is_on_home_page() throws IOException {
-		configFileReader = new ConfigFileReader();
-		configFileReader.configReader();
+//		configFileReader = new ConfigFileReader();
+//		configFileReader.configReader();
         System.out.println("Navigated to home page");
         WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(); 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitWait())); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(FileReaderManager.getInstance().getConfigReader().getImplicitWait())); 
 		
 		pageObjectManager = new PageObjectManager(driver); 
 		loginPage = pageObjectManager.getLoginPage(); 
 		newAccountPage = pageObjectManager.getCreateNewAccountPage(); 
 		
-		driver.get("https://www.facebook.com/");
+//		driver.get("https://www.facebook.com/");
 		
-		driver.get(configFileReader.getuRL()); 
+		driver.get(FileReaderManager.getInstance().getConfigReader().getuRL()); 
     }
 
     @When("User enter username and password")
