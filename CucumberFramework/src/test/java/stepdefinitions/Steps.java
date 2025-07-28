@@ -10,6 +10,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import managers.PageObjectManager;
 import pageObjects.CreateNewAccountPage;
 import pageObjects.LoginPage;
 
@@ -17,6 +18,7 @@ public class Steps {
 	WebDriver driver; 
 	LoginPage loginPage; 
 	CreateNewAccountPage newAccountPage; 
+	PageObjectManager pageObjectManager; 
 
 	@Given("User is on home page")
     public void user_is_on_home_page() {
@@ -24,6 +26,10 @@ public class Steps {
         WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(); 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30)); 
+		
+		pageObjectManager = new PageObjectManager(driver); 
+		loginPage = pageObjectManager.getLoginPage(); 
+		newAccountPage = pageObjectManager.getCreateNewAccountPage(); 
 		
 		driver.get("https://www.facebook.com/");
     }
@@ -37,9 +43,14 @@ public class Steps {
 //		driver.findElement(By.id("pass")).sendKeys("password");
 		
 //        With Page Factory 
-        loginPage = new LoginPage(driver); 
+//        loginPage = new LoginPage(driver); 
+//        loginPage.enterEmail("robin.martis@abc.com");
+//        loginPage.enterpass("password");
+        
+//        With PageObjectManager
         loginPage.enterEmail("robin.martis@abc.com");
         loginPage.enterpass("password");
+        
         
     }
 
@@ -51,9 +62,11 @@ public class Steps {
 //        driver.findElement(By.linkText("Create new account")).click(); 
 		 
 //        Using Page Factory 
-        loginPage = new LoginPage(driver); 
-        loginPage.click_Create_New_Account();
+//        loginPage = new LoginPage(driver); 
+//        loginPage.click_Create_New_Account();
         
+//      With PageObjectManager
+        loginPage.click_Create_New_Account();
         
     }
 
@@ -65,7 +78,10 @@ public class Steps {
 //		driver.findElement(By.name("firstname")).sendKeys("Robin"); 
 
 //      Using Page Factory 
-        newAccountPage = new CreateNewAccountPage(driver); 
+//        newAccountPage = new CreateNewAccountPage(driver); 
+//        newAccountPage.enterFirstName("Robin"); 
+        
+//      With PageObjectManager
         newAccountPage.enterFirstName("Robin"); 
         
     }
@@ -77,8 +93,11 @@ public class Steps {
 //		driver.findElement(By.name("lastname")).sendKeys("Martis"); 
 		
 //      Using Page Factory 
-        newAccountPage = new CreateNewAccountPage(driver); 
-        newAccountPage.enterLastName("Martis"); 
+//        newAccountPage = new CreateNewAccountPage(driver); 
+//        newAccountPage.enterLastName("Martis"); 
+ 
+//      With PageObjectManager        
+        newAccountPage.enterLastName("Martis");
 		
     }
 
@@ -90,9 +109,12 @@ public class Steps {
 //        driver.findElement(By.name("reg_email__")).sendKeys("9611299166");
         
 //      Using Page Factory 
-        newAccountPage = new CreateNewAccountPage(driver); 
-        newAccountPage.enterReg_email("abc.as@asa.com"); 
+//        newAccountPage = new CreateNewAccountPage(driver); 
+//        newAccountPage.enterReg_email("abc.as@asa.com"); 
 
+//      With PageObjectManager          
+        newAccountPage.enterReg_email("abc.as@asa.com");         
+        
     }
 
     @And("Enter New Password")
@@ -103,9 +125,13 @@ public class Steps {
 //        driver.findElement(By.name("reg_passwd__")).sendKeys("NewPassword");
         
 //      Using Page Factory 
-        newAccountPage = new CreateNewAccountPage(driver); 
+//        newAccountPage = new CreateNewAccountPage(driver); 
+//        newAccountPage.enterReg_pass("asdadasd"); 
+
+//      With PageObjectManager           
         newAccountPage.enterReg_pass("asdadasd"); 
-		
+        
+        
     }
 	
 }
