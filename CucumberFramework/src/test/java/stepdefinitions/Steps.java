@@ -1,11 +1,13 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import dataProvider.ConfigFileReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -19,19 +21,24 @@ public class Steps {
 	LoginPage loginPage; 
 	CreateNewAccountPage newAccountPage; 
 	PageObjectManager pageObjectManager; 
+	ConfigFileReader configFileReader; 
 
 	@Given("User is on home page")
-    public void user_is_on_home_page() {
+    public void user_is_on_home_page() throws IOException {
+		configFileReader = new ConfigFileReader();
+		configFileReader.configReader();
         System.out.println("Navigated to home page");
         WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(); 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30)); 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitWait())); 
 		
 		pageObjectManager = new PageObjectManager(driver); 
 		loginPage = pageObjectManager.getLoginPage(); 
 		newAccountPage = pageObjectManager.getCreateNewAccountPage(); 
 		
 		driver.get("https://www.facebook.com/");
+		
+		driver.get(configFileReader.getuRL()); 
     }
 
     @When("User enter username and password")
