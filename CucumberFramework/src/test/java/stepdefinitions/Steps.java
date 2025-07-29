@@ -14,6 +14,7 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import managers.FileReaderManager;
 import managers.PageObjectManager;
+import managers.WebDriverManager1;
 import pageObjects.CreateNewAccountPage;
 import pageObjects.LoginPage;
 
@@ -23,16 +24,23 @@ public class Steps {
 	CreateNewAccountPage newAccountPage; 
 	PageObjectManager pageObjectManager; 
 //	ConfigFileReader configFileReader; 
+	
+	WebDriverManager1 webDriverManager; 
 
 	@Given("User is on home page")
     public void user_is_on_home_page() throws IOException {
 //		configFileReader = new ConfigFileReader();
 //		configFileReader.configReader();
-        System.out.println("Navigated to home page");
-        WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver(); 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(FileReaderManager.getInstance().getConfigReader().getImplicitWait())); 
 		
+		webDriverManager = new WebDriverManager1(); 
+		driver = webDriverManager.getDriver(); 
+		
+        System.out.println("Navigated to home page");
+        
+//        WebDriverManager.chromedriver().setup();
+//		driver = new ChromeDriver(); 
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(FileReaderManager.getInstance().getConfigReader().getImplicitWait())); 
+//		
 		pageObjectManager = new PageObjectManager(driver); 
 		loginPage = pageObjectManager.getLoginPage(); 
 		newAccountPage = pageObjectManager.getCreateNewAccountPage(); 
