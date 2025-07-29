@@ -13,6 +13,7 @@ import managers.PageObjectManager;
 import managers.WebDriverManager1;
 import pageObjects.CreateNewAccountPage;
 import pageObjects.LoginPage;
+import testDataTypes.Customer;
 
 public class LoginPageSteps {
 //	WebDriver driver; 
@@ -35,12 +36,14 @@ public class LoginPageSteps {
     }
 	
 	
-	@When("User enter username and password")
-    public void user_enter_username_and_password() {
+	@When("User enter {string} and {string}>")
+	public void user_enter_and(String username, String password) {
         System.out.println("Entered username and password");
         
-        loginPage.enterEmail("robin.martis@abc.com");
-        loginPage.enterpass("password");
+        Customer customer = FileReaderManager.getInstance().getJsonReader().getCustomerByName(username);
+        
+        loginPage.enterEmail(username);
+        loginPage.enterpass(password);
         
         
     }

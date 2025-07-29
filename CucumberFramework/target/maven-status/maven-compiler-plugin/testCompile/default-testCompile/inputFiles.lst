@@ -1,3 +1,15 @@
-C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\stepdefinitions\Steps.java
-C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\seleniumTests\E2E_Test.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\cucumber\TestContext.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\pageObjects\CreateNewAccountPage.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\stepdefinitions\CreateNewAccountPageSteps.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\enums\DriverType.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\stepdefinitions\LoginPageSteps.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\testDataTypes\Customer.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\enums\EnvironmentType.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\pageObjects\LoginPage.java
 C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\runners\TestRunner.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\managers\FileReaderManager.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\dataProvider\JsonDataReader.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\stepdefinitions\Hooks.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\dataProvider\ConfigFileReader.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\managers\WebDriverManager1.java
+C:\Users\robin\git\CucumberFramework\CucumberFramework\src\test\java\managers\PageObjectManager.java

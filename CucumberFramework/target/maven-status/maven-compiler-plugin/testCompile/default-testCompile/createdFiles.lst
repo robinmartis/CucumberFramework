@@ -1,1 +1,7 @@
-seleniumTests\E2E_Test.class
+managers\WebDriverManager1$1.class
+enums\EnvironmentType.class
+runners\TestRunner.class
+testDataTypes\Customer.class
+pageObjects\CreateNewAccountPage.class
+dataProvider\ConfigFileReader.class
+enums\DriverType.class
