@@ -51,6 +51,7 @@ public class WebDriverManager1 {
         	
         	WebDriverManager.chromedriver().setup();
     		driver = new ChromeDriver(); 
+    		driver.get(FileReaderManager.getInstance().getConfigReader().getuRL()); 
         	
     		break;
         case INTERNETEXPLORER : 
